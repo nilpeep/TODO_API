@@ -19,11 +19,20 @@ require('express-async-errors')
 
 app.set('view engine', 'ejs')
 
-console.log(app)
+app.set('views' , 'public')
+
+app.all('/' , (req, res ) =>{
+    // res.send({
+    //     message:'hi'
+    // })
+
+    res.render('index')
+})
 /* ------------------------------------------------------- */
 // Routes:
 
-app.use(require('./app/routes/todo.router'))
+app.use(require('./app/routes/todo.api.router'))
+app.use(require('./app/routes/todo.view.router'))
 
 /* ------------------------------------------------------- */
 // ErrorHandler:
