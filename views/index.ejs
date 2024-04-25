@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <h1 class="hi">Welcome to home</h1>
-
+    <h1>Welcome to Home</h1>
     <pre>
-        <!-- running js -->
-        <% console.log('template running') %>
-        <!-- safe print to html -->
+        <!-- running JS - no print -->
+        <%
+            console.log('template running')
+            console.log('bla bla')
+        %>
+        <!--  safe-print to html -->
+        <%= '<p><b>Text</b></p>' %>
         <%= 2+5 %>
-        <%- ' <p>text</p> '%>
+        <!--  direct-print to html -->
+        <%- '<p><b>Text</b></p>' %>
+        <!-- comment - no print -->
+        <%# commment %>
+        <!-- cancel template code -->
+        <%% no template %>
+        <!--  direct-print to html and remove newLine (\n) -->
+        <%- '<p><b>Text</b></p>' -%>
     </pre>
 </body>
 </html>

@@ -15,6 +15,7 @@
     <div class="container">
         <div class="row">
             <h1>TODO LIST</h1>
+            <p>Count: <%= count %></p>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -30,21 +31,23 @@
                     </tr>
                 </thead>
                 <tbody>
-
-                    <% console.log(todos, count) %>
-                    <tr>
-                        <td># 1</td>
-                        <td>Test Title</td>
-                        <td>Test Description</td>
-                        <td>Norm</td>
-                        <td>No</td>
-                        <td>05/11/2023</td>
-                        <td>
-                            <a class="btn btn-sm btn-secondary" href="/view/id">Read</a>
-                            <a class="btn btn-sm btn-info" href="/view/id/update">Update</a>
-                            <a class="btn btn-sm btn-danger" href="/view/id/delete" onclick="return confirm('Are you sure?')">Delete</a>
-                        </td>
-                    </tr>
+                    <%# console.log(count, todos) %>
+                    <%# console.log(priority) %>
+                    <% for (let todo of todos) { %>
+                        <tr>
+                            <td># <%= todo.id %></td>
+                            <td><%= todo.title %></td>
+                            <td><%= todo.description %></td>
+                            <td><%= priority[todo.priority] %></td>
+                            <td><%= (todo.isDone ? 'YES' : 'NO') %></td>
+                            <td><%= todo.createdAt.toLocaleDateString('tr') %></td>
+                            <td>
+                                <a class="btn btn-sm btn-secondary" href="/view/<%= todo.id %>">Read</a>
+                                <a class="btn btn-sm btn-info" href="/view/<%= todo.id %>/update">Update</a>
+                                <a class="btn btn-sm btn-danger" href="/view/<%= todo.id %>/delete" onclick="return confirm('Are you sure?')">Delete</a>
+                            </td>
+                        </tr>
+                    <% } %>
                 </tbody>
             </table>
         </div>
